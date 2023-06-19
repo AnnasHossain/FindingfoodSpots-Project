@@ -3,10 +3,13 @@
         <ul>
             <li v-for="item in items" :key="item.id">{{ item.name }}</li>
         </ul>
+        <img alt="Vue logo" src="../assets/logo.png">
+        <HelloWorld msg="Hello World!"/>
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'HomeView',
     data() {
