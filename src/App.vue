@@ -30,5 +30,4 @@ nav a.router-link-exact-active {
 }
 </style>
 <script setup>
-import FoodspotsView from "@/views/FoodspotsView.vue";
 </script>
