@@ -2,25 +2,26 @@
   <div class="FoodspotsView">
     <h1>Here you can see the foodspot list according to your taste! </h1>
 
-<div class="col" v-for="foodspot in foodspots" :key="foodspot.id">
+<div class="col" v-for="FoodSpotsList in FoodSpotsList" :key="FoodSpotsList.id">
 
 
 <table>
     <thead>
     <tr>
-        <th>Lokalname</th>
-        <th>Kategorie</th>
         <th>Adresse</th>
         <th>Bewertung</th>
+        <th>Kategorie</th>
+        <th>Name</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <td>{{ foodspot.name }}</td>
-    <td>{{ foodspot.category }}</td>
-    <td>{{ foodspot.address }}</td>
-    <td>{{ foodspot.rating }}</td>
-    <td><a :href="foodspot.website" target="_blank">visit</a></td>
+
+    <td>{{ FoodSpotsList.address }}</td>
+    <td>{{ FoodSpotsList.rating }}</td>
+    <td><a :href="FoodSpotsList.website" target="_blank">visit</a></td>
+    <td>{{ FoodSpotsList.category }}</td>
+    <td>{{ FoodSpotsList.name }}</td>
 
     </tbody>
 </table>
@@ -31,10 +32,13 @@
 
 <script>
 export default {
+    name: 'FoodSpotList',
     data() {
         return {
-            foodspots: [
-                {
+
+
+            FoodSpotsList: [
+              /*  {
                     id: 1,
                     name: 'CITY CHICKEN BERLIN',
                     category: "fast food",
@@ -58,11 +62,33 @@ export default {
                     rating: 4 + "/" + 5,
                     website: "https://example.com/foodspot3"
                 },
-                // Füge hier weitere Foodspots hinzu...
-            ]
-        };
+                // Füge hier weitere Foodspots hinzu...*/
+            ],
+
+            id: '',
+            name: '',
+            category: '',
+            address: '',
+            rating: '',
+            website: ''
+
+        }
+    },
+    mounted () {
+        const endpoint = 'http://localhost:3000/FoodSpotsList'
+        const requestOptions = {
+         method: 'GET',
+         redirect: 'follow'
+        }
+        fetch(endpoint, requestOptions)
+            .then(response => response.json())
+            .then(result => result.forEach(foodspot => {
+                this.foodspots.push(foodspot)
+            }))
+            .catch(error => console.log('error', error))
     }
-};
+}
+
 </script>
 
 <style>
