@@ -37,33 +37,7 @@ export default {
         return {
 
 
-            FoodSpotsList: [
-              /*  {
-                    id: 1,
-                    name: 'CITY CHICKEN BERLIN',
-                    category: "fast food",
-                    address: "Sonnenallee 59, 12045 Berlin",
-                    rating: 5 + "/" + 5,
-                    website: "https://www.city-chicken-berlin.de/"
-                },
-                {
-                    id: 2,
-                    name: "Lokalname 2",
-                    category: "Kategorie 2",
-                    address: "Adresse 2",
-                    rating: 4 + "/" + 5,
-                    website: "https://example.com/foodspot2"
-                },
-                {
-                    id: 3,
-                    name: "Lokalname 3",
-                    category: "Kategorie 3",
-                    address: "Adresse 3",
-                    rating: 4 + "/" + 5,
-                    website: "https://example.com/foodspot3"
-                },
-                // Füge hier weitere Foodspots hinzu...*/
-            ],
+            FoodSpotsList: [],
 
             id: '',
             name: '',
@@ -75,7 +49,7 @@ export default {
         }
     },
     mounted () {
-        const endpoint = 'http://localhost:3000/FoodSpotsList'
+        const endpoint = 'http://localhost:8080/FoodSpotsList'
         const requestOptions = {
          method: 'GET',
          redirect: 'follow'
