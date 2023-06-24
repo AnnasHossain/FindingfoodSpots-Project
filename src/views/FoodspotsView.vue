@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="foodSpot in FoodSpotsList" :key="foodSpot.id">
+        <tr v-for="FoodSpotsList in FoodSpotsList" :key="FoodSpotsList.id">
           <td>{{ FoodSpotsList.address }}</td>
           <td>{{ FoodSpotsList.rating }}</td>
           <td>{{ FoodSpotsList.category }}</td>
@@ -35,7 +35,7 @@ export default {
       FoodSpotsList: []
     }
   },  methods: {
-        addFoodspot (FoodSpotsLocation) {
+        addFoodSpot (FoodSpotsLocation) {
             const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + FoodSpotsLocation
             const requestOptions = {
                 method: 'GET',
@@ -44,7 +44,7 @@ export default {
 
             fetch(endpoint, requestOptions)
                 .then(response => response.json())
-                .then(foodspot => this.FoodSpotsList.push(foodspot))
+                .then(FoodSpot => this.FoodSpotsList.push(FoodSpot))
                 .catch(error => console.log('error', error))
         }
     },
@@ -59,7 +59,9 @@ export default {
 
     fetch(endpoint, requestOptions)
         .then(response => response.json())
-        .then(result => console.log(result))
+        .then(result => result.forEach(FoodSpot => {
+            this.FoodSpotsList.push(FoodSpot)
+        }))
         .catch(error => console.log('error', error))
 
   }
