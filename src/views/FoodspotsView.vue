@@ -15,11 +15,11 @@
         </thead>
         <tbody>
         <tr v-for="foodSpot in FoodSpotsList" :key="foodSpot.id">
-          <td>{{ foodSpot.address }}</td>
-          <td>{{ foodSpot.rating }}</td>
-          <td><a :href="foodSpot.website" target="_blank">visit</a></td>
-          <td>{{ foodSpot.category }}</td>
-          <td>{{ foodSpot.name }}</td>
+          <td>{{ FoodSpotsList.address }}</td>
+          <td>{{ FoodSpotsList.rating }}</td>
+          <td>{{ FoodSpotsList.category }}</td>
+          <td>{{ FoodSpotsList.name }}</td>
+            <td><a :href="FoodSpotsList.website" target="_blank">visit</a></td>
         </tr>
         </tbody>
       </table>
@@ -33,20 +33,6 @@ export default {
   data() {
     return {
       FoodSpotsList: []
-    }
-  },
-  methods: {
-    addFoodSpot (foodSpotLocation) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + foodSpotLocation
-      const requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      }
-
-      fetch(endpoint, requestOptions)
-          .then(response => response.json())
-          .then(foodSpot => this.FoodSpotsList.push(foodSpot))
-          .catch(error => console.log('error', error))
     }
   },
   mounted() {
