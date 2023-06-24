@@ -34,24 +34,34 @@ export default {
     return {
       FoodSpotsList: []
     }
-  },
+  },  methods: {
+        addFoodspot (FoodSpotsLocation) {
+            const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + FoodSpotsLocation
+            const requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            }
+
+            fetch(endpoint, requestOptions)
+                .then(response => response.json())
+                .then(foodspot => this.FoodSpotsList.push(foodspot))
+                .catch(error => console.log('error', error))
+        }
+    },
   mounted() {
     //const endpoint = ;
+   const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotList'
+   console.log("Working Backend?")
     const requestOptions = {
       method : 'GET',
       redirect : 'follow'
     }
 
-    fetch('http://localhost:3000/FoodSpotsList', requestOptions)
+    fetch(endpoint, requestOptions)
         .then(response => response.json())
-        .then(result => result.forEach(foodSpot => {
-          this.FoodSpotsList.push(foodSpot)
-          this.FoodSpotsList = JSON.parse(foodSpot);
-        }))
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error))
 
-        .catch(error => {
-          console.log('Error', error);
-        });
   }
 };
 </script>
