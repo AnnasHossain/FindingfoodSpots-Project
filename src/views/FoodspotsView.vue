@@ -1,33 +1,30 @@
 <template>
-  <div class="FoodspotsView">
-    <h1>Here you can see the foodspot list according to your taste! </h1>
+    <div class="FoodspotsView">
+        <h1>Here you can see the foodspot list according to your taste!</h1>
 
-<div class="col" v-for="FoodSpotsList in FoodSpotsList" :key="FoodSpotsList.id">
-
-
-<table>
-    <thead>
-    <tr>
-        <th>Adresse</th>
-        <th>Bewertung</th>
-        <th>Kategorie</th>
-        <th>Name</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <td>{{ FoodSpotsList.address }}</td>
-    <td>{{ FoodSpotsList.rating }}</td>
-    <td><a :href="FoodSpotsList.website" target="_blank">visit</a></td>
-    <td>{{ FoodSpotsList.category }}</td>
-    <td>{{ FoodSpotsList.name }}</td>
-
-    </tbody>
-</table>
-
-</div>
-</div>
+        <div class="col">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Bewertung</th>
+                    <th scope="col">Kategorie</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Webseite</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="foodSpot in foodSpotsList" :key="foodSpot.id">
+                    <td>{{ foodSpot.address }}</td>
+                    <td>{{ foodSpot.rating }}</td>
+                    <td>{{ foodSpot.category }}</td>
+                    <td>{{ foodSpot.name }}</td>
+                    <td><a :href="foodSpot.website" target="_blank">visit</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -35,34 +32,21 @@ export default {
     name: 'FoodSpotList',
     data() {
         return {
-
-
-            FoodSpotsList: [],
-
-            id: '',
-            name: '',
-            category: '',
-            address: '',
-            rating: '',
-            website: ''
-
-        }
+            foodSpotsList: []
+        };
     },
-    mounted () {
-        const endpoint = 'http://localhost:8080/FoodSpotsList'
-        const requestOptions = {
-         method: 'GET',
-         redirect: 'follow'
-        }
-        fetch(endpoint, requestOptions)
+    mounted() {
+        const endpoint = 'http://localhost:8080/FoodSpotsList';
+        fetch(endpoint)
             .then(response => response.json())
-            .then(result => result.forEach(foodspot => {
-                this.foodspots.push(foodspot)
-            }))
-            .catch(error => console.log('error', error))
+            .then(data => {
+                this.foodSpotsList = data;
+            })
+            .catch(error => {
+                console.log('Error fetching data:', error);
+            });
     }
-}
-
+};
 </script>
 
 <style>
