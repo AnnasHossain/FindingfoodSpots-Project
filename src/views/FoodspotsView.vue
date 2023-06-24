@@ -14,12 +14,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="foodSpot in foodSpotsList" :key="foodSpot.id">
+                <tr v-for="foodSpot in FoodSpotsList" :key="foodSpot.id">
                     <td>{{ foodSpot.address }}</td>
                     <td>{{ foodSpot.rating }}</td>
+                    <td><a :href="foodSpot.website" target="_blank">visit</a></td>
                     <td>{{ foodSpot.category }}</td>
                     <td>{{ foodSpot.name }}</td>
-                    <td><a :href="foodSpot.website" target="_blank">visit</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -32,18 +32,39 @@ export default {
     name: 'FoodSpotList',
     data() {
         return {
-            foodSpotsList: []
-        };
+            FoodSpotsList: []
+        }
+    },
+    methods: {
+        addFoodSpot (foodSpotLocation) {
+            const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + foodSpotLocation
+            const requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            }
+
+            fetch(endpoint, requestOptions)
+                .then(response => response.json())
+                .then(foodSpot => this.FoodSpotsList.push(foodSpot))
+                .catch(error => console.log('error', error))
+        }
     },
     mounted() {
-        const endpoint = 'http://localhost:8080/FoodSpotsList';
-        fetch(endpoint)
+        //const endpoint = ;
+        const requestOptions = {
+            method : 'GET',
+            redirect : 'follow'
+        }
+
+        fetch('http://localhost:3000/FoodSpotsList', requestOptions)
             .then(response => response.json())
-            .then(data => {
-                this.foodSpotsList = data;
-            })
+            .then(result => result.forEach(foodSpot => {
+                this.FoodSpotsList.push(foodSpot)
+                this.FoodSpotsList = JSON.parse(foodSpot);
+            }))
+
             .catch(error => {
-                console.log('Error fetching data:', error);
+                console.log('Error', error);
             });
     }
 };
