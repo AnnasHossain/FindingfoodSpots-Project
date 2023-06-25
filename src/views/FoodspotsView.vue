@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'FoodSpotList',
+  name: 'FoodSpotsList',
   data() {
     return {
       FoodSpotsList: []
@@ -50,7 +50,7 @@ export default {
     },
   mounted() {
     //const endpoint = ;
-   const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotList'
+   const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotsList'
    console.log("Working Backend?")
     const requestOptions = {
       method : 'GET',
