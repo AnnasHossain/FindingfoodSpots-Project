@@ -1,42 +1,43 @@
 <template>
-  <div class="FoodspotsView">
-    <h1>Here you can see the foodspot list according to your taste!</h1>
+    <div class="foodspots-view">
+        <h1>Here you can see the foodspot list according to your taste!</h1>
 
-    <div class="col">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col">Adresse</th>
-          <th scope="col">Bewertung</th>
-          <th scope="col">Kategorie</th>
-          <th scope="col">Name</th>
-          <th scope="col">Webseite</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="FoodSpotsList in FoodSpotsList" :key="FoodSpotsList.id">
-          <td>{{ FoodSpotsList.address }}</td>
-          <td>{{ FoodSpotsList.rating }}</td>
-          <td>{{ FoodSpotsList.category }}</td>
-          <td>{{ FoodSpotsList.name }}</td>
-            <td><a :href="FoodSpotsList.website" target="_blank">visit</a></td>
-        </tr>
-        </tbody>
-      </table>
+        <div class="foodspots-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Adresse</th>
+                    <th>Bewertung</th>
+                    <th>Kategorie</th>
+                    <th>Name</th>
+                    <th>Webseite</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="foodSpot in foodSpotsList" :key="foodSpot.id">
+                    <td>{{ foodSpot.address }}</td>
+                    <td>{{ foodSpot.rating }}</td>
+                    <td>{{ foodSpot.category }}</td>
+                    <td>{{ foodSpot.name }}</td>
+                    <td><a :href="foodSpot.website" target="_blank">Visit</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'FoodSpotsList',
-  data() {
-    return {
-      FoodSpotsList: []
-    }
-  },  methods: {
-        addFoodSpot (FoodSpotsLocation) {
-            const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + FoodSpotsLocation
+    name: 'FoodSpotsView',
+    data() {
+        return {
+            foodSpotsList: []
+        }
+    },
+    methods: {
+        fetchFoodSpotsList() {
+            const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotsList'
             const requestOptions = {
                 method: 'GET',
                 redirect: 'follow'
@@ -44,46 +45,53 @@ export default {
 
             fetch(endpoint, requestOptions)
                 .then(response => response.json())
-                .then(FoodSpot => this.FoodSpotsList.push(FoodSpot))
+                .then(result => {
+                    this.foodSpotsList = result
+                })
                 .catch(error => console.log('error', error))
         }
     },
-  mounted() {
-    //const endpoint = ;
-   const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotsList'
-   console.log("Working Backend?")
-    const requestOptions = {
-      method : 'GET',
-      redirect : 'follow'
+    mounted() {
+        this.fetchFoodSpotsList()
     }
-
-    fetch(endpoint, requestOptions)
-        .then(response => response.json())
-        .then(result => result.forEach(FoodSpot => {
-            this.FoodSpotsList.push(FoodSpot)
-        }))
-        .catch(error => console.log('error', error))
-
-  }
 };
 </script>
 
-<style>
-table {
-  border-collapse: collapse;
+<style scoped>
+.foodspots-view {
+    text-align: center;
+    margin-top: 20px;
 }
 
-table, th, td {
-  border: 1px solid black;
+.foodspots-table {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
 th, td {
-  padding: 5px;
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
-.col {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 380px;
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 </style>
