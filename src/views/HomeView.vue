@@ -1,29 +1,30 @@
 <template>
-    <div class="home">
-        <div class="banner">
-            <h1 class="title">Willkommen bei FoodSpot</h1>
-            <p class="subtitle">Entdecken Sie die besten Restaurants und Spezialitäten in Ihrer Nähe</p>
-        </div>
-        <div class="image-collage">
-            <div class="image-wrapper dessert-wrapper">
-                <router-link to="/about">
-                    <img class="image" src="../assets/dessertfoodspot.png" alt="Dessert-Foodspot">
-                </router-link>
-            </div>
-            <div class="image-wrapper focus-wrapper">
-                <router-link to="/about">
-                    <div class="image-zoom">
-                        <img class="image focus" src="../assets/döner.png" alt="Döner-Foodspot">
-                    </div>
-                </router-link>
-            </div>
-            <div class="image-wrapper restaurant-wrapper">
-                <router-link to="/about">
-                    <img class="image" src="../assets/restaurantpicture.png" alt="Restaurant-Foodspot">
-                </router-link>
-            </div>
-        </div>
+  <div class="home">
+    <div class="banner">
+      <h1 class="title">Willkommen bei FoodSpot</h1>
+      <p class="subtitle">Entdecken Sie die besten Restaurants und Spezialitäten in Ihrer Nähe</p>
     </div>
+    <div class="image-collage">
+      <div class="image-wrapper dessert-wrapper">
+        <router-link to="/about">
+          <img class="image" src="../assets/dessertfoodspot.png" alt="Dessert-Foodspot">
+        </router-link>
+      </div>
+      <div class="image-wrapper focus-wrapper">
+        <router-link to="/about">
+          <div class="image-zoom">
+            <img class="image focus" src="../assets/döner.png" alt="Döner-Foodspot">
+          </div>
+        </router-link>
+      </div>
+      <div class="image-wrapper restaurant-wrapper">
+        <router-link to="/about">
+          <img class="image" src="../assets/restaurantpicture.png" alt="Restaurant-Foodspot">
+        </router-link>
+      </div>
+    </div>
+    <p class="image-collage-description">Entdecken Sie unsere vielfältige Auswahl an Foodspots!</p>
+  </div>
 </template>
 
 
