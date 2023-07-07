@@ -1,8 +1,10 @@
 <template>
   <div class="about">
     <div class="content">
+      <img class="company-image" src="../assets/company-image.jpg" alt="Company Image">
       <h1 class="title">About Us</h1>
       <p>Welcome to our company website. Learn more about who we are and what we do.</p>
+
     </div>
     <div class="login-form">
       <h2 class="login-title">Log In to Our Website</h2>
@@ -136,6 +138,13 @@ export default {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.company-image {
+  margin-top: 20px;
+  max-width: 100%;
+  width: 90%;
+  height: auto;
 }
 
 .create-nutzer-btn:hover {
