@@ -35,13 +35,20 @@
             </table>
         </div>
     </div>
+
+    <!-- diese create-FoodSpot-form ist für validation in CreateFoodSpotForm.vue Klasse -->
+    <create-food-spot-form @created="addFoodSpot"></create-food-spot-form>
 </template>
 
 <script>
 import {toFormData} from "axios";
+import CreateFoodSpotForm from "@/components/CreateFoodSpotForm.vue";
 
 export default {
     name: 'FoodSpotsView',
+    components: {
+        CreateFoodSpotForm
+    },
     data() {
         return {
             foodSpotsList: [],
@@ -66,7 +73,7 @@ export default {
             fetch(endpoint, requestOptions)
                 .then(response => response.json())
                 .then(result => {
-                    this.foodSpotsList = result
+                    this.foodSpotsList= result
                 })
                 .catch(error => console.log('error', error))
         },
@@ -83,6 +90,19 @@ export default {
             console.log('Gelöscht: ', foodSpotId);
             this.selectedFoodSpotId = null;
         },
+        addFoodSpot () {
+            const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotsList'
+            const requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            }
+            fetch(endpoint, requestOptions)
+                .then(response => response.json)
+                .then(result => {this.foodSpotsList= result})
+                .catch(error => console.log('error', error))
+            }
+
+
     },
     mounted() {
         this.fetchFoodSpotsList()
