@@ -35,7 +35,6 @@
             </table>
         </div>
     </div>
-
     <!-- diese create-FoodSpot-form ist für validation in CreateFoodSpotForm.vue Klasse -->
     <create-food-spot-form @created="addFoodSpot"></create-food-spot-form>
 </template>
@@ -129,6 +128,7 @@ export default {
     }
 };
 </script>
+
 
 <style scoped>
 .foodspots-view {
