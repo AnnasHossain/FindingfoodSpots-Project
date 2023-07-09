@@ -50,6 +50,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .about {
   display: flex;

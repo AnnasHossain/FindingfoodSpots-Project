@@ -85,22 +85,42 @@ export default {
             console.log('Bestätigt: ', foodSpotId);
             this.selectedFoodSpotId = null;
         },
-        deleteFoodSpot(foodSpotId) {
-            // Implementiere die Logik zum Löschen des Elements
-            console.log('Gelöscht: ', foodSpotId);
-            this.selectedFoodSpotId = null;
+      deleteFoodSpot(foodSpotId) {
+        // Führen Sie hier die Logik zum Löschen des Elements aus, z. B. eine API-Anfrage oder eine Datenbankoperation
+
+        // Beispiel für eine API-Anfrage mit axios
+        axios.delete(`/api/foodspots/${foodSpotId}`)
+            .then(response => {
+              // Überprüfen Sie den Erfolgsstatus der Anfrage
+              if (response.status === 200) {
+                console.log('FoodSpot gelöscht:', foodSpotId);
+                this.selectedFoodSpotId = null;
+                // Führen Sie gegebenenfalls weitere Aktualisierungen durch
+              } else {
+                console.log('Fehler beim Löschen des FoodSpots');
+              }
+            })
+            .catch(error => {
+              console.log('Fehler beim Löschen des FoodSpots:', error);
+            });
+      }
         },
-        addFoodSpot () {
-            const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotsList'
-            const requestOptions = {
-                method: 'GET',
-                redirect: 'follow'
-            }
-            fetch(endpoint, requestOptions)
-                .then(response => response.json)
-                .then(result => {this.foodSpotsList= result})
-                .catch(error => console.log('error', error))
-            }
+      addFoodSpot() {
+        const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/FoodSpotsList';
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(/* Hinzufügen der Daten für den neuen FoodSpot */),
+        };
+
+        fetch(endpoint, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+              console.log('FoodSpot hinzugefügt:', result);
+              this.fetchFoodSpotsList(); // Aktualisieren Sie die Liste der FoodSpots
+            })
+            .catch(error => console.log('Fehler beim Hinzufügen des FoodSpots:', error));
+      }
 
 
     },
