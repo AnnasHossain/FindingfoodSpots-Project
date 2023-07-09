@@ -77,10 +77,23 @@ export default {
       console.log("Bestätigt:", foodSpotId);
       this.selectedFoodSpotId = null;
     },
-    deleteFoodSpot(foodSpotId) {
-      console.log("Gelöscht:", foodSpotId);
-      this.selectedFoodSpotId = null;
-    },
+      deleteFoodSpot(foodSpotId) {
+          const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + "/FoodSpotsList/" + foodSpotId;
+          const requestOptions = {
+              method: "DELETE",
+              redirect: "follow",
+          };
+          fetch(endpoint, requestOptions)
+              .then((response) => {
+                  if (response.ok) {
+                      console.log("Gelöscht:", foodSpotId);
+                      this.fetchFoodSpotsList();
+                  } else {
+                      console.log("Fehler beim Löschen des FoodSpots:", response.status);
+                  }
+              })
+              .catch((error) => console.log("Fehler beim Löschen des FoodSpots:", error));
+      },
     addFoodSpot() {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + "/FoodSpotsList";
       const requestOptions = {
