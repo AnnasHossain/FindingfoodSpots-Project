@@ -3,12 +3,11 @@
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Add a new Foodspot!</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <form class="text-start needs-validation" id="create-foodspot" novalidate>
-                ...
                 <div class="mb-3">
                     <label for="name" class="form-label"> Name </label>
                     <input type="text" class="form-control" id="name" v-model="name" required>
@@ -20,11 +19,11 @@
                     <label for="category" class="form-label">Kategorie</label>
                     <select id="category" class="form-select" v-model="category" required>
                         <option value="" selected disabled>Choose...</option>
-                        <option value="fast food">Male</option>
-                        <option value="asiatische Küche">Female</option>
-                        <option value="französische Küche">Diverse</option>
-                        <option value="japanische Küche">Diverse</option>
-                        <option value="französische Küche">Diverse</option>
+                        <option value="fast food">fast food</option>
+                        <option value="asiatische Küche">asiatische Küche</option>
+                        <option value="französische Küche">französische Küche</option>
+                        <option value="japanische Küche">japanische Küche</option>
+                        <option value="orientalische Küche">orientalische Küche</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid category.

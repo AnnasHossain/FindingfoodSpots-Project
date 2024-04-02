@@ -36,6 +36,7 @@
     </div>
   </div>
 
+
   <create-food-spot-form @created="addFoodSpot"></create-food-spot-form>
 </template>
 
