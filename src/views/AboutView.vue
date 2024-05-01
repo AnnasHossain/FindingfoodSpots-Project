@@ -23,9 +23,8 @@
 export default {
   data() {
     return {
-      name: "",
-      showErrorMessage: false,
-    };
+      Nutzer: []
+    }
   },
   methods: {
     login() {
@@ -47,6 +46,20 @@ export default {
           });
     },
   },
+  mounted() {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/Nutzers'
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    }
+    //fetch(endpoint, requestOptions)
+    fetch(endpoint, requestOptions)
+        .then(response => response.json)
+        .then (result => result.forEach(Nutzer => {
+          this.Nutzers.push(Nutzer)
+        }))
+        .catch(error => console. log('error', error));
+  }
 };
 </script>
 
