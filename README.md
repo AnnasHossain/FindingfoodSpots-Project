@@ -1,5 +1,10 @@
 # findngfoodfrontend
 
+(Frontend)
+Deployment:
+https://findingfood-spots-project-qc7qo168e-annas-hossains-projects.vercel.app
+
+
 ## Project setup
 ```
 npm install
