@@ -2,7 +2,7 @@
   <div class="home">
     <div class="banner">
       <h1 class="title">Willkommen bei FoodSpot</h1>
-      <p class="subtitle">Entdecken Sie die besten Restaurants und Spezialitäten in Ihrer Nähe</p>
+      <p class="subtitle">Entdecken Sie die besten Restaurants und Spezialitäten in Ihrer Nähe, die sonst KEINER kennt</p>
     </div>
     <div class="image-collage">
       <div class="image-wrapper dessert-wrapper">
@@ -24,6 +24,7 @@
       </div>
     </div>
     <p class="image-collage-description">Entdecken Sie unsere vielfältige Auswahl an Foodspots!</p>
+    <p class="image-collage-description">Login nur für VIP Mitglieder!</p>
   </div>
 </template>
 

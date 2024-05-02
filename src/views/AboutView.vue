@@ -52,11 +52,10 @@ export default {
       method: 'GET',
       redirect: 'follow'
     }
-    //fetch(endpoint, requestOptions)
     fetch(endpoint, requestOptions)
         .then(response => response.json)
-        .then (result => result.forEach(Nutzer => {
-          this.Nutzers.push(Nutzer)
+        .then (result => result.forEach(nutzer => {
+          this.Nutzer.push(nutzer)
         }))
         .catch(error => console. log('error', error));
   }

@@ -116,6 +116,16 @@ export default {
     padding: 10px 15px;
     border-radius: 30px;
 }
+.btn-primary.sticky-button::after {
+  content: '+'; /* Insert "+" symbol as content */
+  position: absolute; /* Position the symbol absolutely */
+  bottom: 0; /* Set bottom to 0 for bottom edge placement */
+  right: 10px; /* Set right to 0 for right edge placement */
+  font-size: 20px; /* Adjust the symbol size as desired */
+  color: white; /* Set the symbol color */
+}
+
+
 </style>
 <script setup>
 </script>
