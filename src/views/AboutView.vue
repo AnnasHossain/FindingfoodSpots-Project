@@ -47,6 +47,7 @@ export default {
     },
   },
   mounted() {
+    this.login()
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/Nutzers'
     const requestOptions = {
       method: 'GET',
