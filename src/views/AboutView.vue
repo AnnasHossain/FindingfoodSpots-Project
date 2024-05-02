@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     login() {
-      fetch("http://localhost:8080/Nutzers")
+      fetch(process.env.VUE_APP_BACKEND_BASE_URL + "/Nutzers")
           .then((response) => response.json())
           .then((Nutzer) => {
             const foundNutzer = Nutzer.find((Nutzers) => Nutzers.name === this.name);
