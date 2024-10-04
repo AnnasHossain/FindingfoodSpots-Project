@@ -30,5 +30,22 @@ npm run test:unit
 npm run lint
 ```
 
+### to see packages that needs to be updated
+```
+npm outdated
+```
+
+### cleaning caches for slow starts
+```
+npm cache clean 
+```
+
+### troubleshooting 
+### Error cant find module 'chalk' 
+```
+npm --production=false install
+```
+### (or delete and reinstall node_modules files)
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

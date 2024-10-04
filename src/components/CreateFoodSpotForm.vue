@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="mt-5">
-                    <button type="submit" class="btn btn-primary" @click="createFoodSpot"> Create</button>
+                    <button type="submit" class="btn btn-primary" @click.prevent="createFoodSpot"> Create</button>
                     <button type="reset" class="btn btn-danger" >Reset</button>
                 </div>
             </form>
