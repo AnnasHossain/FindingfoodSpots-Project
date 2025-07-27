@@ -96,7 +96,6 @@ export default {
                     redirect: 'follow'
                 }
                 const response = await fetch(endpoint, requestOptions)
-                await this.handleResponse(response)
               // Ergänzung;         || Denn weiter oben habe ich emits: ... gemacht was aber nicht reicht um das event auszulösen, deshalb noch diese Zeilen
                 const result = await response.json()
                 this.$emit('created', result)
