@@ -97,10 +97,15 @@ export default {
                 }
                 const response = await fetch(endpoint, requestOptions)
                 await this.handleResponse(response)
+              // Ergänzung;         || Denn weiter oben habe ich emits: ... gemacht was aber nicht reicht um das event auszulösen, deshalb noch diese Zeilen
+                const result = await response.json()
+                this.$emit('created', result)
             }
         },
         validate () {
-            const form = document.getElementById('create-food-spot-form')
+            //const form = document.getElementById('create-food-spot-form')// stimmt nicht überein mit dem was im template steht
+            const form = document.getElementById('create-foodspot') // Wenn immernoch Fehler, dann Formular anpassen mit dem was ich darüber hab
+            // WEITERER FEHLER: in einer anderen Datei (FoodspotsView) hatte ich auch eine add Funktion, was keinen Sinn macht, weil die add Funktion in dieser Datei gemacht wird
             form.classList.add('was-validated')
             return form.checkValidity()
         }

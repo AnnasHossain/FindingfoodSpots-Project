@@ -23,8 +23,10 @@
 export default {
   data() {
     return {
-      Nutzer: []
-    }
+      Nutzer: [],
+      name: '',
+      showErrorMessage: false
+    };
   },
   methods: {
     login() {
@@ -54,7 +56,7 @@ export default {
       redirect: 'follow'
     }
     fetch(endpoint, requestOptions)
-        .then(response => response.json)
+        .then(response => response.json())
         .then (result => result.forEach(nutzer => {
           this.Nutzer.push(nutzer)
         }))

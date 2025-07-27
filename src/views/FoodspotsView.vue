@@ -47,7 +47,7 @@ import CreateFoodSpotForm from "@/components/CreateFoodSpotForm.vue";
 export default {
   name: "FoodSpotsView",
   components: {
-    CreateFoodSpotForm,
+    CreateFoodSpotForm, //kebab-case also nach jedem Wort ein Bindestrich--> für den addFoodSpot Button
   },
   data() {
     return {
@@ -109,28 +109,10 @@ export default {
           })
           .catch((error) => console.log("Fehler beim Löschen des FoodSpots:", error));
     },
-    addFoodSpot(foodSpotId) {
-      const FoodSpotdatas = {
-        name: this.name,
-        address: this.address,
-        rating: this.rating,
-        category: this.category,
-        website: this.website
-      }
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + "/FoodSpotsList" + foodSpotId;
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(FoodSpotdatas/* Hinzufügen des neuen FoodSpot */),
-      };
-
-      fetch(endpoint, requestOptions)
-          .then((response) => response.json())
-          .then((result) => {
-            console.log("FoodSpot hinzugefügt:", result);
-            this.fetchFoodSpotsList();
-          })
-          .catch((error) => console.log("Fehler beim Hinzufügen des FoodSpots:", error));
+    addFoodSpot(foodSpot) {
+      // Github abchecken, hier war ein Block dass die ADD-Funktion doppelt aufgerufen hat mit dem Formular "CreateFoodSpotForm" (dort wird es zwar mit dem $emit Event gemacht)
+      // aber die Add-Funktion Logik wo die Kommunikation mit dem Backend über das POST-Fetching stattfindet geschah hier als auch in der Formular-Datei
+      this.foodSpotsList.push(foodSpot) // Hierdurch entsteht keine doppelte API - Abfrage
     },
   },
   mounted() {
@@ -141,10 +123,14 @@ export default {
       redirect: 'follow'
     };
     fetch(endpoint, requestOptions)
-        .then(response => response.json)
-        .then (result => result.forEach(FoodSpot => {
+        .then(response => response.json())
+        /* .then (result => result.forEach(FoodSpot => {
           this.fetchFoodSpotsList.push(FoodSpot)
-        }))
+        }))*/
+        /* stattdessen das hier denn foodSpotsList ist KEINE Methode, sondern ein Array; das Ergebnis muss diesem Array ( FoodSpotsList ) korrekt zugewiesen werden */
+        .then((result) => {
+          this.foodSpotsList = result;
+        })
         .catch(error => console. log('error', error));
   },
 };
