@@ -71,4 +71,8 @@ Mit diesem Benutzer kannst du dich direkt einloggen.
 - **Bearbeiten/Löschen:** Einfach auf eine Spalte klicken – es erscheinen dann entsprechende Optionen.
 
 
+## Troubleshooting und wichtige Hinweise
+
+- Da sämtliche beanspruchte Dienste kostenlos sind, kann es zu Verzögerungen kommen.
+- Render hat bspw. einen Sleep Modus für das Backend Deployment weshalb es beim ersten mal vielleicht nicht auf Anhieb klappt und es ein paar Aktualisierungen und das leeren des Browser caches bedarf
 
