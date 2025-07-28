@@ -1,51 +1,77 @@
-# findngfoodfrontend
+# FindingFood-Spots-Projekt
 
-(Frontend)
-Deployment:
-https://findingfood-spots-project-qc7qo168e-annas-hossains-projects.vercel.app
+Vollständiges Webprojekt bestehend aus einem **Vue-Frontend**, einem **Spring Boot Backend** und einer lokalen **PostgreSQL-Datenbank**.
 
+---
 
-## Project setup
+## 📋 Voraussetzungen
+
+- **Node.js** (v18+)
+- **Java 17** (z. B. Temurin JDK)
+- **PostgreSQL** lokal oder Docker
+- **Git**
+- Optional: **Docker** für Container-basiertes Setup
+
+---
+
+## 🚀 Projekt lokal einrichten
+
+### 1. Projekt klonen
+```bash
+# Frontend
+git clone https://github.com/AnnasHossain/FindingfoodSpots-Project.git
+
+# Backend
+git clone https://github.com/AnnasHossain/spring-demo1.git
+
 ```
+### 2. Frontend (Vue.js) Installation
+```bash
 npm install
 ```
-
-### Compiles and hot-reloads for development
-```
+```bash
+# Frontend starten
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 3. Backend (Spring Boot) Intallation und Start (Docker)
+```bash
+./gradlew build
+docker-compose up --build
 ```
-npm run build
+```bash
+# Container stoppen
+docker-compose down
 ```
+## 📌 Wichtige API-Endpunkte
 
-### Run your unit tests
-```
-npm run test:unit
-```
+| Methode | URL               | Beschreibung             |
+|---------|-------------------|--------------------------|
+| GET     | `/Foodspots`      | Alle Foodspots anzeigen  |
+| POST    | `/Foodspots`      | Foodspot erstellen       |
+| PUT     | `/Foodspots/{id}` | Foodspot aktualisieren   |
+| DELETE  | `/Foodspots/{id}` | Foodspot löschen         |
+| GET     | `/Nutzers`        | Alle Nutzer anzeigen     |
+| POST    | `/Nutzers`        | Nutzer erstellen         |
 
-### Lints and fixes files
-```
-npm run lint
-```
+---
 
-### to see packages that needs to be updated
-```
-npm outdated
-```
+## 👤 Test-Nutzer
 
-### cleaning caches for slow starts
-```
-npm cache clean 
-```
+Ein initialer Nutzer ist bereits vordefiniert:
+- **Name:** `Ralf`
+- **Geschlecht:** `male`
+- **Alter:** `7`
+- **Besonderheit:** `none`
 
-### troubleshooting 
-### Error cant find module 'chalk' 
-```
-npm --production=false install
-```
-### (or delete and reinstall node_modules files)
+Mit diesem Benutzer kannst du dich direkt einloggen.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+---
+
+## 🧭 UI-Hinweise
+
+- **Neuen Datensatz hinzufügen (nach login):** Über den kleinen **blauen Button unten rechts**.
+- **Bearbeiten/Löschen:** Einfach auf eine Spalte klicken – es erscheinen dann entsprechende Optionen.
+
+
+
