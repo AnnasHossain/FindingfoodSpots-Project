@@ -60,9 +60,6 @@ docker-compose down
 
 Ein initialer Nutzer ist bereits vordefiniert:
 - **Name:** `Ralf`
-- **Geschlecht:** `male`
-- **Alter:** `7`
-- **Besonderheit:** `none`
 
 Mit diesem Benutzer kannst du dich direkt einloggen.
 
