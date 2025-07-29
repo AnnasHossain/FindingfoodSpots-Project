@@ -16,9 +16,9 @@ Der Login User lautet: Ralf
 
 - **Node.js** (v18+)
 - **Java 17** (z. B. Temurin JDK)
-- **PostgreSQL** lokal oder Docker
+- **PostgreSQL** 
 - **Git**
-- Optional: **Docker** für Container-basiertes Setup
+- **Docker** für Container-basiertes Backend + Datenbank
 
 ### 1. Projekt klonen
 ```bash
