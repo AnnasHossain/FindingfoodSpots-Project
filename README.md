@@ -9,6 +9,9 @@ Der Login User lautet: Ralf
 
 ---
 
+## 🚀 Projekt lokal einrichten
+
+
 ## 📋 Voraussetzungen
 
 - **Node.js** (v18+)
@@ -16,10 +19,6 @@ Der Login User lautet: Ralf
 - **PostgreSQL** lokal oder Docker
 - **Git**
 - Optional: **Docker** für Container-basiertes Setup
-
----
-
-## 🚀 Projekt lokal einrichten
 
 ### 1. Projekt klonen
 ```bash
