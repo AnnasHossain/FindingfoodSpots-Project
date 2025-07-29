@@ -12,7 +12,7 @@ Der Login User lautet: Ralf
 ## 🚀 Projekt lokal einrichten
 
 
-## 📋 Voraussetzungen
+### 📋 Voraussetzungen
 
 - **Node.js** (v18+)
 - **Java 17** (z. B. Temurin JDK)
