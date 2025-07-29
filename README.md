@@ -2,6 +2,11 @@
 
 Vollständiges Webprojekt bestehend aus einem **Vue-Frontend**, einem **Spring Boot Backend** und einer lokalen **PostgreSQL-Datenbank**.
 
+
+**Note:** Manchmal geht mein Backend - Server in den Sleep Modus, weshalb es dann nötig ist den Browser zu wechseln und ggf. ein bisschen zu warten sowie den Browser Cache zu leeren.
+
+Der Login User lautet: Ralf
+
 ---
 
 ## 📋 Voraussetzungen
