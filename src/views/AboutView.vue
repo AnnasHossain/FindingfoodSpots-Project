@@ -14,7 +14,8 @@
       <button type="button" class="login-btn" @click="login">Log In</button>
       <p v-if="showErrorMessage" class="error-message">The user does not exist. Please register.</p>
       <hr class="divider" />
-      <button type="button" class="create-nutzer-btn">Create New User</button>
+      <button type="button" class="create-nutzer-btn" @click="createUserButton">Create New User</button>
+      <p v-if="showGagErrorMessage" class="error-message">This button is a gag...</p>
     </div>
   </div>
 </template>
@@ -25,7 +26,8 @@ export default {
     return {
       Nutzer: [],
       name: '',
-      showErrorMessage: false
+      showErrorMessage: false,
+      showGagErrorMessage: false, // Wenn ich eine neue Funktion in vue nutzen will muss ich sie auch in data() deklarieren
     };
   },
   methods: {
@@ -35,21 +37,21 @@ export default {
           .then((Nutzer) => {
             const foundNutzer = Nutzer.find((Nutzers) => Nutzers.name === this.name);
 
-            if (foundNutzer) {
-              console.log("User logged in successfully");
-              this.$router.push("/foodspots");
-            } else {
+            if (!foundNutzer) {
               this.showErrorMessage = true;
-              console.log("The user does not exist. Please register.");
+              return;
             }
+            this.$router.push("/foodspots");
           })
           .catch((error) => {
             console.error("Failed to retrieve user data:", error);
           });
     },
+    createUserButton() {
+      this.showGagErrorMessage = true;
+    },
   },
   mounted() {
-    this.login()
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/Nutzers'
     const requestOptions = {
       method: 'GET',
