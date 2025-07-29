@@ -1,6 +1,6 @@
 # FindingFood-Spots-Projekt
 
-Vollständiges Webprojekt bestehend aus einem **Vue-Frontend**, einem **Spring Boot Backend** und einer lokalen **PostgreSQL-Datenbank**.
+Full-Stack Webprojekt mit allen CRUD-Operatoren bestehend aus einem **Vue-Frontend**, einem **Spring Boot Backend** und einer **PostgreSQL-Datenbank**.
 
 
 **Note:** Manchmal geht mein Backend - Server in den Sleep Modus, weshalb es dann nötig ist den Browser zu wechseln oder zu warten (Ein guter Hinweis ist wenn folgende rote Rückmeldung direkt unter dem Login Button erscheint: "The user does not exist. Please register." dann ist sicher dass das Backend aus dem sleep modus raus ist und sie können sich mit dem user login "Ralf" einloggen).
