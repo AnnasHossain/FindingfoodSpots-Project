@@ -18,7 +18,7 @@ Der Login User lautet: Ralf
 - **Java 17** (z. B. Temurin JDK)
 - **PostgreSQL** 
 - **Git**
-- **Docker** für Container-basiertes Backend + Datenbank
+- **Docker** für Container-basiertes Backend + Datenbank Start
 
 ### 1. Projekt klonen
 ```bash
