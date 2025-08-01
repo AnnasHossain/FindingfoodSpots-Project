@@ -19,11 +19,18 @@
           <td>{{ foodSpot.address }}</td>
           <td>{{ foodSpot.rating }}</td>
           <td>{{ foodSpot.category }}</td>
-          <td>{{ foodSpot.name }}</td>
+          <td>
+            <template v-if="selectedFoodSpotId === foodSpot.id && selectedField === 'name'">
+              <input v-model="foodSpot.name" />
+            </template>
+            <template v-else>
+              {{ foodSpot.name }}
+            </template>
+          </td>
           <td><a :href="foodSpot.website" target="_blank">Visit</a></td>
           <td>
             <div v-if="selectedFoodSpotId !== foodSpot.id">
-              <button @click="showButtons(foodSpot.id)">Edit</button>
+              <button @click="showButtons(foodSpot.id, 'name')">Edit</button>
             </div>
             <div v-else>
               <button @click="confirm(foodSpot.id)"><i class="fas fa-check"></i></button>
@@ -47,12 +54,13 @@ import CreateFoodSpotForm from "@/components/CreateFoodSpotForm.vue";
 export default {
   name: "FoodSpotsView",
   components: {
-    CreateFoodSpotForm, //kebab-case also nach jedem Wort ein Bindestrich--> für den addFoodSpot Button
+    CreateFoodSpotForm,
   },
   data() {
     return {
       foodSpotsList: [],
       selectedFoodSpotId: null,
+      selectedField: '',
     };
   },
   methods: {
@@ -63,7 +71,6 @@ export default {
         method: "GET",
         redirect: "follow",
       };
-
       fetch(endpoint, requestOptions)
           .then((response) => response.json())
           .then((result) => {
@@ -71,14 +78,19 @@ export default {
           })
           .catch((error) => console.log("error", error));
     },
-    showButtons(foodSpotId) {
+    showButtons(foodSpotId, field) {
       this.selectedFoodSpotId = foodSpotId;
+      this.selectedField = field;
     },
     confirm(foodSpotId) {
+      const updateSpot = this.foodSpotsList.find(s => s.id === foodSpotId);
+      const body = JSON.stringify(updateSpot);
       this.selectedFoodSpotId = null;
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + "/FoodSpotsList/" + foodSpotId;
       const requestOptions = {
-        method: "UPDATE",
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: body,
         redirect: "follow",
       };
       fetch(endpoint, requestOptions)
@@ -110,8 +122,6 @@ export default {
           .catch((error) => console.log("Fehler beim Löschen des FoodSpots:", error));
     },
     addFoodSpot(foodSpot) {
-      // Github abchecken, hier war ein Block dass die ADD-Funktion doppelt aufgerufen hat mit dem Formular "CreateFoodSpotForm" (dort wird es zwar mit dem $emit Event gemacht)
-      // aber die Add-Funktion Logik wo die Kommunikation mit dem Backend über das POST-Fetching stattfindet geschah hier als auch in der Formular-Datei
       this.foodSpotsList.push(foodSpot) // Hierdurch entsteht keine doppelte API - Abfrage
     },
   },
@@ -124,10 +134,6 @@ export default {
     };
     fetch(endpoint, requestOptions)
         .then(response => response.json())
-        /* .then (result => result.forEach(FoodSpot => {
-          this.fetchFoodSpotsList.push(FoodSpot)
-        }))*/
-        /* stattdessen das hier denn foodSpotsList ist KEINE Methode, sondern ein Array; das Ergebnis muss diesem Array ( FoodSpotsList ) korrekt zugewiesen werden */
         .then((result) => {
           this.foodSpotsList = result;
         })
