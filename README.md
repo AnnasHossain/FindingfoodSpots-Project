@@ -3,9 +3,9 @@
 Full-Stack Webprojekt mit allen CRUD-Operatoren bestehend aus einem **Vue-Frontend**, einem **Spring Boot Backend** und einer **PostgreSQL-Datenbank**.
 
 
-**Note:** Manchmal geht mein Backend - Server in den Sleep Modus, weshalb es dann nötig ist den Browser zu wechseln oder 5 min zu warten (Ein guter Hinweis ist wenn folgende rote Rückmeldung direkt unter dem Login Button erscheint nachdem darauf geklickt wurde: "The user does not exist. Please register." dann ist sicher dass das Backend aus dem sleep modus raus ist und es kann mit dem user "Ralf" eingeloggt werden).
+**Note:** Manchmal geht mein Backend - Server in den Sleep Modus, weshalb es dann nötig ist den Browser zu wechseln oder 5 min zu warten (Ein guter Hinweis ist wenn folgende rote Rückmeldung direkt unter dem Login Button erscheint nachdem darauf geklickt wurde: "The user does not exist. Please register." dann ist sicher dass das Backend aus dem sleep modus raus ist und es kann mit dem user "user" eingeloggt werden).
 
-Der Login User lautet: Ralf
+Der Login User lautet: user
 
 ---
 
